@@ -20,6 +20,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem 'faker'
 
+gem 'active_model_serializers', '~> 0.10.2'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -2,7 +2,8 @@ class ReviewsController < ApplicationController
 
   # before_action :set_review, only: [:show, :update, :destroy]
 
-  # skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+
 
   def index
     @reviews = Review.all
@@ -32,13 +33,15 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @review = Review.find_by(id: params[:id])
+  
     if @review.update(review_params)
       render json: @review
     else
       render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
     end
   end
-
+  
   def destroy
     @review.destroy
     head :no_content
